@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card">
+    <view class="title">我的排名：{{board.my_rank || '-'}}</view>
+    <view class="muted">我的分数：{{board.my_score || 0}}</view>
+  </view>
+  <view wx:for="{{board.list}}" wx:key="rank" class="card">
+    <view class="row">
+      <view>{{item.rank}}. {{item.nickname}}</view>
+      <view class="muted">已完成</view>
+    </view>
+  </view>
+</view>

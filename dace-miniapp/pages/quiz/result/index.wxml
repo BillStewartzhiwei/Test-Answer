@@ -1,0 +1,6 @@
+<view class="page">
+  <view class="card">
+    <view class="title">{{attempt.score || 0}} / {{attempt.total_score || 0}}</view>
+    <view class="muted">只展示你的成绩和排名</view>
+  </view>
+</view>

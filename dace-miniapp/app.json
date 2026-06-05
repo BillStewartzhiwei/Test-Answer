@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/register/index",
+    "pages/home/index",
+    "pages/space/create/index",
+    "pages/space/detail/index",
+    "pages/space/invite/index",
+    "pages/join/index",
+    "pages/quiz/create/index",
+    "pages/quiz/edit/index",
+    "pages/quiz/answer/index",
+    "pages/quiz/result/index",
+    "pages/leaderboard/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "答测",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7f9"
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  }
+}

@@ -1,0 +1,7 @@
+<view class="page">
+  <view class="card">
+    <van-field value="{{name}}" label="名称" placeholder="如 高二3班数学" bind:change="onNameChange" />
+    <van-field value="{{description}}" label="描述" placeholder="可选" bind:change="onDescriptionChange" />
+  </view>
+  <van-button type="primary" block bind:click="submit">创建</van-button>
+</view>
