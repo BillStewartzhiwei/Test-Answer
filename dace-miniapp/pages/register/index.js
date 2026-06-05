@@ -26,7 +26,7 @@ Page({
       return;
     }
     const user = await request.post("/auth/register", { role, nickname });
-    auth.setSession(wx.getStorageSync("token"), user);
+    auth.setSession(user.token, user);
     wx.redirectTo({ url: "/pages/home/index" });
   }
 });
