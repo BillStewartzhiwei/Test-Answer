@@ -1,8 +1,8 @@
 package com.dace.controller;
 
 import com.dace.common.ApiResponse;
-import com.dace.config.AuthContext;
 import com.dace.dto.CreateSpaceRequest;
+import com.dace.service.SpaceService;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
@@ -18,28 +18,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/spaces")
 public class SpaceController {
+    private final SpaceService spaceService;
+
+    public SpaceController(SpaceService spaceService) {
+        this.spaceService = spaceService;
+    }
+
     @PostMapping
     public ApiResponse<Map<String, Object>> create(@Valid @RequestBody CreateSpaceRequest request) {
-        return ApiResponse.ok(Map.of("id", 1, "owner_id", AuthContext.get().getId(), "name", request.getName()));
+        return ApiResponse.ok(spaceService.create(request));
     }
 
     @GetMapping
     public ApiResponse<List<Map<String, Object>>> list() {
-        return ApiResponse.ok(List.of());
+        return ApiResponse.ok(spaceService.list());
     }
 
     @GetMapping("/{id}")
     public ApiResponse<Map<String, Object>> detail(@PathVariable Long id) {
-        return ApiResponse.ok(Map.of("id", id, "name", "Demo Space", "member_count", 0, "quiz_count", 0));
+        return ApiResponse.ok(spaceService.detail(id));
     }
 
     @PutMapping("/{id}")
     public ApiResponse<Map<String, Object>> update(@PathVariable Long id, @RequestBody CreateSpaceRequest request) {
-        return ApiResponse.ok(Map.of("id", id, "name", request.getName()));
+        return ApiResponse.ok(spaceService.update(id, request));
     }
 
     @DeleteMapping("/{id}")
     public ApiResponse<Map<String, Object>> archive(@PathVariable Long id) {
-        return ApiResponse.ok(Map.of("id", id, "status", 0));
+        return ApiResponse.ok(spaceService.archive(id));
     }
 }

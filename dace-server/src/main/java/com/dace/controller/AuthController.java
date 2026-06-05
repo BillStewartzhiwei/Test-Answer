@@ -3,6 +3,7 @@ package com.dace.controller;
 import com.dace.common.ApiResponse;
 import com.dace.dto.LoginRequest;
 import com.dace.dto.RegisterRequest;
+import com.dace.service.AuthService;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,30 +16,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping
 public class AuthController {
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
     @PostMapping("/auth/login")
     public ApiResponse<Map<String, Object>> login(@Valid @RequestBody LoginRequest request) {
-        return ApiResponse.ok(Map.of(
-            "token", "dev-token",
-            "openid", "openid-from-wechat-code-placeholder"
-        ));
+        return ApiResponse.ok(authService.login(request));
     }
 
     @PostMapping("/auth/register")
     public ApiResponse<Map<String, Object>> register(@Valid @RequestBody RegisterRequest request) {
-        return ApiResponse.ok(Map.of(
-            "id", 1,
-            "role", request.getRole(),
-            "nickname", request.getNickname()
-        ));
+        return ApiResponse.ok(authService.register(request));
     }
 
     @GetMapping("/user/profile")
     public ApiResponse<Map<String, Object>> profile() {
-        return ApiResponse.ok(Map.of("id", 1, "nickname", "dev user", "role", "creator"));
+        return ApiResponse.ok(authService.profile());
     }
 
     @PutMapping("/user/profile")
     public ApiResponse<Map<String, Object>> updateProfile(@RequestBody Map<String, Object> request) {
-        return ApiResponse.ok(request);
+        return ApiResponse.ok(authService.updateProfile(request));
     }
 }
