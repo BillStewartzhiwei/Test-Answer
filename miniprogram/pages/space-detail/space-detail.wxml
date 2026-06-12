@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">空间详情</view>
+    <view class="subtitle">管理题目发布，或查看当前空间的答题表现。</view>
+  </view>
+  <view class="actions">
+    <button wx:if="{{user.role==='CREATOR'}}" class="btn" bindtap="goInvite">邀请码</button>
+    <button wx:if="{{user.role==='CREATOR'}}" class="btn secondary" bindtap="goCreateQuiz">创建题目</button>
+    <button class="btn secondary" bindtap="goSpaceRanking">总排行</button>
+  </view>
+  <view class="section-title">题目套</view>
+  <view wx:if="{{quizzes.length===0}}" class="empty">还没有题目套。</view>
+  <view wx:for="{{quizzes}}" wx:key="id" class="card">
+    <view class="row">
+      <view>
+        <view class="name">{{item.title}}</view>
+        <view class="meta">
+          <view class="pill gold">总分 {{item.totalScore}}</view>
+          <view class="pill">限时 {{item.timeLimitMinutes || 0}} 分钟</view>
+        </view>
+      </view>
+      <view class="pill">{{item.status}}</view>
+    </view>
+    <view class="actions">
+      <button wx:if="{{user.role==='CREATOR' && item.status==='DRAFT'}}" class="btn secondary" data-id="{{item.id}}" bindtap="editQuiz">编辑</button>
+      <button wx:if="{{user.role==='CREATOR' && item.status==='DRAFT'}}" class="btn" data-id="{{item.id}}" bindtap="publish">发布</button>
+      <button wx:if="{{user.role==='CREATOR' && item.status==='PUBLISHED'}}" class="btn danger" data-id="{{item.id}}" bindtap="closeQuiz">关闭</button>
+      <button wx:if="{{user.role==='PARTICIPANT'}}" class="btn" data-id="{{item.id}}" bindtap="answer">开始答题</button>
+      <button class="btn secondary" data-id="{{item.id}}" bindtap="goQuizRanking">排行</button>
+    </view>
+  </view>
+</view>

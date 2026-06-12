@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">创建空间</view>
+    <view class="subtitle">给一组题目和成员准备一个独立答题场景。</view>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="空间名称" value="{{name}}" bindinput="onName"/>
+    <textarea class="textarea" placeholder="空间描述" value="{{description}}" bindinput="onDescription"/>
+    <button class="btn" bindtap="submit">保存</button>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">{{roleText}}首页</view>
+    <view class="subtitle">{{user.nickname || '未命名用户'}}，今天要处理的空间都在这里。</view>
+  </view>
+  <view class="actions">
+    <button wx:if="{{user.role==='CREATOR'}}" class="btn" bindtap="goCreate">创建空间</button>
+    <button wx:if="{{user.role==='PARTICIPANT'}}" class="btn" bindtap="goJoin">加入空间</button>
+  </view>
+  <view class="section-title">我的空间</view>
+  <view wx:if="{{spaces.length===0}}" class="empty">还没有空间，先创建或加入一个。</view>
+  <view wx:for="{{spaces}}" wx:key="id" class="card pressable" bindtap="goSpace" data-id="{{item.id}}">
+    <view class="row">
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="muted">{{item.description}}</view>
+      </view>
+      <view class="pill">{{item.status}}</view>
+    </view>
+  </view>
+</view>

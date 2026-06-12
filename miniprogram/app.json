@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/register/register",
+    "pages/home/home",
+    "pages/space-create/space-create",
+    "pages/space-detail/space-detail",
+    "pages/invite-manage/invite-manage",
+    "pages/join-space/join-space",
+    "pages/quiz-create/quiz-create",
+    "pages/question-edit/question-edit",
+    "pages/answer/answer",
+    "pages/result/result",
+    "pages/ranking/ranking"
+  ],
+  "window": {
+    "navigationBarTitleText": "答测",
+    "navigationBarBackgroundColor": "#1f2937",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f6f7fb"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

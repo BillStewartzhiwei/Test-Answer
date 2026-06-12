@@ -1,6 +1,0 @@
-<view class="page">
-  <view class="card">
-    <van-field value="{{code}}" label="邀请码" placeholder="请输入 6 位邀请码" bind:change="onCodeChange" />
-  </view>
-  <van-button type="primary" block bind:click="join">加入</van-button>
-</view>

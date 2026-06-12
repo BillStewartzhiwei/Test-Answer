@@ -1,7 +1,0 @@
-<view class="page">
-  <view class="section">
-    <view class="title">答测</view>
-    <view class="muted">用微信登录后继续</view>
-  </view>
-  <van-button type="primary" block bind:click="login">微信登录</van-button>
-</view>

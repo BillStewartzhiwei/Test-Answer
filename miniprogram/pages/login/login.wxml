@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">答测</view>
+    <view class="subtitle">创建空间、发布题目、邀请成员答题。先用本地模式把流程跑顺。</view>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="输入测试 openId，如 creator001" value="{{openId}}" bindinput="onOpenId"/>
+    <button class="btn" bindtap="login">本地登录</button>
+  </view>
+</view>

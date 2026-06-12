@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">选择角色</view>
+    <view class="subtitle">创建者负责出题发布，参与者负责加入空间答题。角色注册后不可更改。</view>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="昵称" value="{{nickname}}" bindinput="onNickname"/>
+    <view class="actions">
+      <button class="btn {{role==='CREATOR'?'':'secondary'}}" data-role="CREATOR" bindtap="selectRole">创建者</button>
+      <button class="btn {{role==='PARTICIPANT'?'':'secondary'}}" data-role="PARTICIPANT" bindtap="selectRole">参与者</button>
+    </view>
+    <button class="btn" bindtap="submit">完成注册</button>
+  </view>
+</view>

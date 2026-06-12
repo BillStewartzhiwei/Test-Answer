@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">创建题目套</view>
+    <view class="subtitle">先确定标题和时限，再进入题目编辑。</view>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="标题" value="{{title}}" bindinput="onTitle"/>
+    <input class="input" type="number" placeholder="答题时限分钟，0不限" value="{{timeLimitMinutes}}" bindinput="onLimit"/>
+    <button class="btn" bindtap="submit">创建并编辑题目</button>
+  </view>
+</view>

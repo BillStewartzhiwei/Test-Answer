@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">编辑题目</view>
+    <view class="subtitle">支持单选、多选和判断题，保存后回到空间详情发布。</view>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="题目套标题" value="{{title}}" bindinput="onTitle"/>
+    <input class="input" type="number" placeholder="答题时限分钟" value="{{timeLimitMinutes}}" bindinput="onLimit"/>
+  </view>
+  <view class="section-title">题目列表</view>
+  <view wx:for="{{questions}}" wx:key="index" wx:for-index="qIndex" class="card">
+    <view class="row">
+      <view class="name">第 {{qIndex + 1}} 题</view>
+      <button class="btn danger mini" size="mini" data-index="{{qIndex}}" bindtap="removeQuestion">删除</button>
+    </view>
+    <picker range="{{types}}" range-key="label" value="{{item.typeIndex}}" data-index="{{qIndex}}" bindchange="onType">
+      <view class="picker">{{types[item.typeIndex].label}}</view>
+    </picker>
+    <textarea class="textarea" placeholder="题干" value="{{item.title}}" data-index="{{qIndex}}" bindinput="onQuestionTitle"/>
+    <input class="input" type="number" placeholder="分值" value="{{item.score}}" data-index="{{qIndex}}" bindinput="onScore"/>
+    <view wx:for="{{item.options}}" wx:key="index" wx:for-index="oIndex" class="option">
+      <input class="option-input" placeholder="选项内容" value="{{item.content}}" data-q="{{qIndex}}" data-o="{{oIndex}}" bindinput="onOptionContent"/>
+      <label class="muted">
+        <checkbox checked="{{item.correct}}" data-q="{{qIndex}}" data-o="{{oIndex}}" bindtap="toggleCorrect"/> 正确答案
+      </label>
+    </view>
+    <button class="btn secondary mini" size="mini" data-index="{{qIndex}}" bindtap="addOption">添加选项</button>
+  </view>
+  <view class="actions">
+    <button class="btn secondary" bindtap="addQuestion">添加题目</button>
+    <button class="btn" bindtap="save">保存草稿</button>
+  </view>
+</view>

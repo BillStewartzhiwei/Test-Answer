@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">{{title}}</view>
+    <view class="subtitle">得分高者优先，同分按用时更短排名。</view>
+  </view>
+  <view wx:if="{{items.length===0}}" class="empty">暂无排行数据。</view>
+  <view wx:for="{{items}}" wx:key="userId" class="card">
+    <view class="row">
+      <view>
+        <view class="name">#{{item.rank}} {{item.nickname || '匿名用户'}}</view>
+        <view class="muted">用时 {{item.durationSeconds}} 秒</view>
+      </view>
+      <view class="pill gold">{{item.score}} / {{item.totalScore}}</view>
+    </view>
+  </view>
+</view>

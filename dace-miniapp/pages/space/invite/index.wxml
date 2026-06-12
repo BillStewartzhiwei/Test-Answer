@@ -1,7 +1,0 @@
-<view class="page">
-  <view class="card">
-    <view class="title">{{invite.code || '尚未生成'}}</view>
-    <view class="muted">默认 7 天有效，最多 50 人使用</view>
-  </view>
-  <van-button type="primary" block bind:click="createInvite">生成邀请码</van-button>
-</view>

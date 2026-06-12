@@ -1,8 +1,0 @@
-<view class="page">
-  <view class="card">
-    <van-field value="{{title}}" label="标题" placeholder="如 第一章单元测验" bind:change="onTitleChange" />
-    <van-field value="{{timeLimit}}" label="时限" placeholder="分钟，0 为不限时" type="number" bind:change="onTimeLimitChange" />
-    <van-field value="{{description}}" label="说明" placeholder="可选" bind:change="onDescriptionChange" />
-  </view>
-  <van-button type="primary" block bind:click="submit">创建并编辑题目</van-button>
-</view>

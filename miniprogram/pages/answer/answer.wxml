@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="hero">
+    <view class="row">
+      <view>
+        <view class="title">{{quiz.title}}</view>
+        <view class="subtitle">剩余 {{leftText}}</view>
+      </view>
+      <view class="pill gold">{{quiz.totalScore}} 分</view>
+    </view>
+  </view>
+  <view wx:for="{{questions}}" wx:key="question.id" class="card">
+    <view class="name">{{index + 1}}. {{item.question.title}}</view>
+    <checkbox-group data-qid="{{item.question.id}}" bindchange="onSelect">
+      <label wx:for="{{item.options}}" wx:for-item="option" wx:key="id" class="option">
+        <checkbox value="{{option.id}}"/> {{option.content}}
+      </label>
+    </checkbox-group>
+  </view>
+  <button class="btn" bindtap="submit">提交</button>
+</view>

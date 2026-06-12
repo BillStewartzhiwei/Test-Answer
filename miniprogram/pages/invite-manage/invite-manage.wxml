@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="hero">
+    <view class="title">邀请码</view>
+    <view class="subtitle">生成多个邀请码，控制有效期和使用次数。</view>
+  </view>
+  <view class="card">
+    <input class="input" type="number" placeholder="有效天数，默认7" value="{{validDays}}" bindinput="onValidDays"/>
+    <input class="input" type="number" placeholder="最大使用次数，默认50" value="{{maxUses}}" bindinput="onMaxUses"/>
+    <button class="btn" bindtap="create">生成邀请码</button>
+  </view>
+  <view class="section-title">有效记录</view>
+  <view wx:if="{{invites.length===0}}" class="empty">暂无邀请码。</view>
+  <view wx:for="{{invites}}" wx:key="id" class="card">
+    <view class="row">
+      <view>
+        <view class="score">{{item.code}}</view>
+        <view class="muted">已用 {{item.usedCount}} / {{item.maxUses}}</view>
+        <view class="muted">过期：{{item.expireAt}}</view>
+      </view>
+      <view class="pill">{{item.status}}</view>
+    </view>
+    <view class="actions">
+      <button class="btn secondary" data-id="{{item.id}}" bindtap="disable">失效</button>
+      <button class="btn danger" data-id="{{item.id}}" data-code="{{item.code}}" bindtap="remove">删除</button>
+    </view>
+  </view>
+</view>
